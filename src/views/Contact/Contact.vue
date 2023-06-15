@@ -138,7 +138,7 @@ onMounted(()=>{
  
   
   <div class="p-3">
-    <h2 class="uppercase dark:text-white text-gray-900">Social network</h2>
+    <h2 class="uppercase  text-gray-900 font-bold">Social network</h2>
 
     <!-- Main modal -->
     <div tabindex="-1" aria-hidden="true" class="overflow-y-auto flex bg-[rgba(0,0,0,0.4)] overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full" :class="modal ? '' : 'hidden'">
@@ -192,12 +192,12 @@ onMounted(()=>{
 
 
 
-    <section class="dark:bg-gray-900 p-0 sm:p-5 md:p-0 md:py-4">
+    <section class=" p-0 sm:p-5 md:p-0 md:py-4">
 
     <!-- ------------------------table-------------------------------------------- -->
     <div class="w-full max-w-screen-xl px-0 lg:p-0">
         <!-- Start coding here -->
-        <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+        <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 
                     <button @click="toggleModal" type="button" class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2">
@@ -207,24 +207,24 @@ onMounted(()=>{
             </div>
 
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 table-auto">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr class="text-center">
+                        <tr class="">
                             <th scope="col" class="px-4 py-3">Name:</th>
                             <th scope="col" class="px-4 py-3">Link:</th>
-                            <th scope="col" class="px-4 py-3">Icon</th>
+                            <th scope="col" class="px-4 py-3">Icon:</th>
                             <th scope="col" class="px-4 py-3">
-                                <span class="sr-only">Actions</span>
+                                <span>Actions</span>
                             </th>
                         </tr>
                     </thead>
                     <tbody class="">
-                        <tr v-for="(el, index) in computedList" :key="el.id" class="border-b dark:border-gray-700 text-center">
+                        <tr v-for="(el, index) in computedList" :key="el.id" class="border-b dark:border-gray-700">
                             <td class="px-4 py-3">{{ el.name }}</td>
                             <td class="px-4 py-3">{{ el.link}}</td>
                             <td class="px-4 py-3">{{ el.icon}}</td>
                             
-                            <td @mouseleave="cancelToggel" class="px-4 py-3 flex flex-col items-center justify-center relative">
+                            <td @mouseleave="cancelToggel" class="px-4 py-3 flex flex-col items-center relative">
                                 <button @click="toggleAction(el.id)"  class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -233,10 +233,10 @@ onMounted(()=>{
                                 <div v-if="action == el.id" class="z-10 absolute bottom-8  w-22 bg-white rounded divide-y divide-gray-100 shadow" >
                                     <ul  class="py-0 text-sm text-gray-700 dark:text-gray-200">
                                         <li>
-                                            <a @click="updateContact(el.id)" class="block py-1 px-4 text-green-400 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Update</a>
+                                            <a @click="updateContact(el.id)" class="block py-1 px-4 text-green-400 font-bold hover:bg-gray-100 ">Update</a>
                                         </li>
                                         <li>
-                                            <a @click="removeContact(el.id)" class="block py-1 px-4 text-red-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                                            <a @click="removeContact(el.id)" class="block py-1 px-4 text-red-500 font-bold hover:bg-gray-100 ">Delete</a>
                                         </li>
                                     </ul>
                                 </div>

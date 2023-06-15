@@ -27,8 +27,6 @@ const cancelToggel= ()=>{
 
 
 
-
-
 const contactInfo = reactive({
     name: '',
     link: '',
@@ -149,7 +147,7 @@ onMounted(()=>{
 <template>
   
   <div class="p-3">
-    <h2 class="uppercase dark:text-white text-gray-900">My Projects</h2>
+    <h2 class="uppercase dark:text-white text-gray-900 font-bold">My Projects</h2>
 
     <!-- Main modal -->
     <div tabindex="-1" aria-hidden="true" class="overflow-y-auto flex bg-[rgba(0,0,0,0.4)] overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full" :class="modal ? '' : 'hidden'">
@@ -203,7 +201,7 @@ onMounted(()=>{
 
 
 
-    <section class="dark:bg-gray-900 p-0 sm:p-5 md:p-0 md:py-4">
+    <section class=" p-0 sm:p-5 md:p-0 md:py-4">
 
     <!-- ------------------------table-------------------------------------------- -->
     <div class="w-full max-w-screen-xl px-0 lg:p-0">
@@ -218,19 +216,19 @@ onMounted(()=>{
             </div>
 
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr class="text-center">
+                <table class="w-full text-sm text-gray-500 table-auto">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                        <tr class="text-left">
                             <th scope="col" class="px-4 py-3">Name:</th>
                             <th scope="col" class="px-4 py-3">Link:</th>
                             <th scope="col" class="px-4 py-3">Description</th>
                             <th scope="col" class="px-4 py-3">
-                                <span class="sr-only">Actions</span>
+                                <span>Actions</span>
                             </th>
                         </tr>
                     </thead>
                     <tbody class="">
-                        <tr v-for="(el, index) in computedList" :key="el.id" class="border-b dark:border-gray-700 text-center">
+                        <tr v-for="(el, index) in computedList" :key="el.id" class="border-b dark:border-gray-700">
                             <td class="px-4 py-3">{{ el.name }}</td>
                             <td class="px-4 py-3">{{ el.link}}</td>
                             <td class="px-4 py-3">{{ el.description}}</td>
@@ -241,13 +239,13 @@ onMounted(()=>{
                                         <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                     </svg>
                                 </button>
-                                <div v-if="action == el.id" class="z-10 absolute bottom-8  w-22 bg-white rounded divide-y divide-gray-100 shadow" >
+                                <div v-if="action == el.id" class="z-10 absolute bottom-8  w-22 bg-white rounded divide-y border divide-gray-100 shadow" >
                                     <ul  class="py-0 text-sm text-gray-700 dark:text-gray-200">
                                         <li>
-                                            <a @click="updateContact(el.id)" class="block py-1 px-4 text-green-400 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Update</a>
+                                            <a @click="updateContact(el.id)" class="block py-1 px-4 text-green-400 font-bold hover:bg-gray-200 ">Update</a>
                                         </li>
                                         <li>
-                                            <a @click="removeContact(el.id)" class="block py-1 px-4 text-red-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                                            <a @click="removeContact(el.id)" class="block py-1 px-4 text-red-500 font-bold hover:bg-gray-200 ">Delete</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -262,7 +260,6 @@ onMounted(()=>{
     <!-- -------------------------end of table------------------------------------- -->
    
 
-  
 
 
     </section>

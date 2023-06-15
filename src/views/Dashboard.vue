@@ -4,11 +4,11 @@ import Sidebar from '../components/Sidebar/Sidebar.vue'
 
 <template>
   <main>
-    <section id="main" class="w-full">
+    <section id="main" class="w-full h-[100vh] bg-gray-100">
       <Sidebar />
-      <div class="p-4 sm:ml-64">
+      <div class="p-4 sm:ml-64 ">
         <div
-          class=""
+          class="bg-gray-100 "
         >
         <router-view></router-view>
         </div>
