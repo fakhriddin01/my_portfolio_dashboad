@@ -7,66 +7,56 @@ export const navLinks = [
     },
     {
         id: 2,
-        title: "Xodimlar",
-        link: "/employee",
-        icon: "bx bx-user-plus",
-        type: ['SUPERADMIN']
-
-    },
-    {
-        id: 9,
-        title: "Mahsulot turi",
-        link: "/types",
-        icon: "bx bxs-layer-plus",
-        type: ['ADMIN', 'SUPERADMIN']
-
-    },
-    {
-        id: 8,
-        title: "Mahsulotlar",
-        link: "/product",
-        icon: "bx bxs-basket",
-        type: ['ADMIN', 'SUPERADMIN']
-
-    },
-    {
-        id: 6,
-        title: "Kontaktlar",
+        title: "Social network",
         link: "/contact",
-        icon: "bx bxs-contact",
-        type: ['OPERATOR', 'SUPERADMIN']
-
+        icon: "bx bx-link-alt"
     },
     {
         id: 3,
-        title: "Buyurtmalar",
-        link: "/order",
-        icon: "bx bxs-store-alt",
-        type: ['OPERATOR', 'SUPERADMIN', "OPERATOR"]
-
+        title: "Projects",
+        link: "/project",
+        icon: "bx bx-folder"
     },
-
     {
         id: 4,
-        title: "Yangi buyurtma",
-        link: "/order",
-        icon: "bx bxs-cart",
-        type: ['OPERATOR', 'SUPERADMIN', "OPERATOR"]
-
-    },
-    {
-        id: 7,
-        title: "Viloyatlar",
-        link: "/region",
-        icon: "bx bxs-map",
-        type: ['OPERATOR', 'SUPERADMIN']
+        title: "Skills",
+        link: "/skill",
+        icon: "bx bx-extension"
 
     },
     {
         id: 5,
-        title: "Sozlamalar",
-        link: "/settings",
-        icon: "bx bxs-cog",
-        type: ['ADMIN', 'SUPERADMIN', "OPERATOR", 'CURRIER']
+        title: "Languages",
+        link: "/languages",
+        icon: "bx bx-wink-tongue"
+    },
+    {
+        id: 6,
+        title: "Experience",
+        link: "/experience",
+        icon: "bx bx-history"
+    },
+
+    {
+        id: 7,
+        title: "Education",
+        link: "/education",
+        icon: "bx bx-book-open",
+        type: ['OPERATOR', 'SUPERADMIN', "OPERATOR"]
+
+    },
+    {
+        id: 8,
+        title: "Posts",
+        link: "/posts",
+        icon: "bx bx-podcast"
+
+    },
+    {
+        id: 9,
+        title: "Users",
+        link: "/users",
+        icon: "bx bxs-user",
     },
 ]
+
