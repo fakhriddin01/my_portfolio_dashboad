@@ -4,6 +4,18 @@ import { projectStore } from '../../stores/projectStore';
 import { toast } from 'vue3-toastify';
 import { useProject } from '../../service/project';
 import {useRouter} from 'vue-router'
+import { Modal } from 'flowbite-vue'
+
+const isShowModal = ref(false)
+function closeModal() {
+  isShowModal.value = false
+  localStorage.removeItem('delete_id')
+}
+
+function showModal(delete_id) {
+    localStorage.setItem('delete_id', delete_id)
+    isShowModal.value = true
+}
 
 const router = useRouter();
 
@@ -11,20 +23,6 @@ const store = projectStore();
 const modal = ref(false);
 const isUpdate = ref(false);
 let computedList = ref([])
-
-const action = ref('');
-
-const toggleAction = (id) =>{
-    if(action.value == id){
-        action.value = ''
-    }else{
-        action.value = id
-    }
-};
-const cancelToggel= ()=>{
-    action.value=''
-};
-
 
 
 const contactInfo = reactive({
@@ -113,11 +111,14 @@ const modifyContact=(event)=>{
 
 }
 
-const removeContact= (id)=>{
+const removeContact=()=>{
+    const id = localStorage.getItem('delete_id')
+    console.log(id);
     useProject.remove(id).then((res)=>{
         if(res.status == 200){
             toast.success('deleted',{autoClose: 1000})
             updateList();
+            closeModal()
         }
     }).catch((error)=>{
         console.log(error);
@@ -216,15 +217,13 @@ onMounted(()=>{
             </div>
 
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-gray-500 table-auto">
+                <table class="w-full text-sm table-auto">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                         <tr class="text-left">
                             <th scope="col" class="px-4 py-3">Name:</th>
                             <th scope="col" class="px-4 py-3">Link:</th>
                             <th scope="col" class="px-4 py-3">Description</th>
-                            <th scope="col" class="px-4 py-3">
-                                <span>Actions</span>
-                            </th>
+                            <th scope="col" class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="">
@@ -233,21 +232,10 @@ onMounted(()=>{
                             <td class="px-4 py-3">{{ el.link}}</td>
                             <td class="px-4 py-3">{{ el.description}}</td>
                             
-                            <td @mouseleave="cancelToggel" class="px-4 py-3 flex flex-col items-center justify-center relative">
-                                <button @click="toggleAction(el.id)"  class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                    </svg>
-                                </button>
-                                <div v-if="action == el.id" class="z-10 absolute bottom-8  w-22 bg-white rounded divide-y border divide-gray-100 shadow" >
-                                    <ul  class="py-0 text-sm text-gray-700 dark:text-gray-200">
-                                        <li>
-                                            <a @click="updateContact(el.id)" class="block py-1 px-4 text-green-400 font-bold hover:bg-gray-200 ">Update</a>
-                                        </li>
-                                        <li>
-                                            <a @click="removeContact(el.id)" class="block py-1 px-4 text-red-500 font-bold hover:bg-gray-200 ">Delete</a>
-                                        </li>
-                                    </ul>
+                            <td class="px-4 py-3 text-[20px]">
+                                <div  class="bg-white rounded  shadow flex w-[100px]" >
+                                    <button @click="updateContact(el.id)" class="py-1 px-4 text-green-400  hover:bg-gray-200 "><i class='bx bx-edit-alt'></i></button>
+                                    <button @click="showModal(el.id)" class="py-1 px-4 text-red-500  hover:bg-gray-200 "><i class='bx bx-trash'></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -259,7 +247,30 @@ onMounted(()=>{
     </div>
     <!-- -------------------------end of table------------------------------------- -->
    
-
+     <Modal size="xl" v-if="isShowModal" @close="closeModal">
+            <template #header>
+                <div class="flex items-center text-lg text-red-600 ">
+                    Warning!
+                </div>
+            </template>
+            <template #body>
+                <p class="text-base leading-relaxed">
+                     Are you sure delete this position?
+                </p>
+                
+            </template>
+            <template #footer>
+                <div class="flex justify-between">
+                <button @click="closeModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 ">
+                    Decline
+                </button>
+                <button @click="removeContact" type="button" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+                    Delete
+                </button>
+                </div>
+            </template>                       
+        
+        </Modal>
 
 
     </section>

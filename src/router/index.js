@@ -2,8 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import Contact from '../views/Contact/Contact.vue'
 import Project from '../views/Project/Project.vue'
+import Skill from '../views/Skill/Skill.vue'
 import Login from '../views/Login/Login.vue'
 import Error from '../views/Error/Error.vue'
+import Language from '../views/Language/Language.vue'
+import Experience from '../views/Experience/Experience.vue'
+import Education from '../views/Education/Education.vue'
+import Post from '../views/Post/Post.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +27,31 @@ const router = createRouter({
           path: '/project',
           name: 'project',
           component: Project,
+        },
+        {
+          path: '/skill',
+          name: 'skill',
+          component: Skill,
+        },
+        {
+          path: '/languages',
+          name: 'language',
+          component: Language,
+        },
+        {
+          path: '/experience',
+          name: 'experience',
+          component: Experience,
+        },
+        {
+          path: '/education',
+          name: 'education',
+          component: Education,
+        },
+        {
+          path: '/posts',
+          name: 'post',
+          component: Post,
         },
       ]
     },
