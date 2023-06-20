@@ -13,6 +13,12 @@ export const usePost = {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
     }),
+    getOne : (id) => axios.get(`/post/${id}`, {
+        headers:{
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    }),
+
     remove: (id)=> axios.delete(`/post/${id}`, {
         headers:{
             "Authorization": `Bearer ${localStorage.getItem('token')}`
@@ -23,5 +29,10 @@ export const usePost = {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
     }),
+    comments: (post_id)=>axios.get(`/comment/post/${post_id}`, {
+        headers:{
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
     
 }

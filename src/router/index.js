@@ -9,6 +9,8 @@ import Language from '../views/Language/Language.vue'
 import Experience from '../views/Experience/Experience.vue'
 import Education from '../views/Education/Education.vue'
 import Post from '../views/Post/Post.vue'
+import PostItem from '../views/Post/PostItem.vue'
+import Home from '../views/Home/Home.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +20,11 @@ const router = createRouter({
       name: 'home',
       component: Dashboard,
       children:[
+        {
+          path: '/',
+          name: 'home',
+          component: Home,
+        },
         {
           path: '/contact',
           name: 'contact',
@@ -52,6 +59,11 @@ const router = createRouter({
           path: '/posts',
           name: 'post',
           component: Post,
+        },
+        {
+          path: '/posts/:id',
+          name: 'post-item',
+          component: PostItem,
         },
       ]
     },

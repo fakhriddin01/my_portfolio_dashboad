@@ -21,5 +21,12 @@ export const useProject = {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
     }),
+
+    updateImage: (id, state)=> axios.patch(`/project/image/${id}`, state, {
+        headers:{
+            "content-type": "multipart/form-data",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    }),
     
 }

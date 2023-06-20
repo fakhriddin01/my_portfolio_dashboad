@@ -42,7 +42,6 @@ export const navLinks = [
         title: "Education",
         link: "/education",
         icon: "bx bx-book-open",
-        type: ['OPERATOR', 'SUPERADMIN', "OPERATOR"]
 
     },
     {
@@ -51,12 +50,6 @@ export const navLinks = [
         link: "/posts",
         icon: "bx bx-podcast"
 
-    },
-    {
-        id: 9,
-        title: "Users",
-        link: "/users",
-        icon: "bx bxs-user",
-    },
+    }
 ]
 
