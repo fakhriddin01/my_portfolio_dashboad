@@ -178,19 +178,26 @@ const addImage = (id)=> {
     localStorage.setItem('project_id', id)
 }
 
-const formdata = new FormData();
+let  formdata 
+
 const uploadImage = e => {
     e.preventDefault()
+    formdata = new FormData();
     formdata.append('file', e.target.files[0])
 }
 
 const updateImage = (event) =>{
     event.preventDefault();
     const id = localStorage.getItem('project_id');
-    console.log(formdata, id);
     useProject.updateImage(id, formdata).then((res)=>{
         toggleModal2()
         updateList()
+    }).catch((error)=>{
+        if(error.message == 'Request failed with status code 401' || error.message == 'token expired' || error.message == 'token not found'){
+            router.push({name: 'login'})
+        }
+        console.log(error);
+        toast.error(error.message)
     })
 }
 
@@ -341,7 +348,7 @@ const updateImage = (event) =>{
                             <td class="px-4 py-3">{{ el.description}}</td>
                             <td class="px-4 py-3">{{ el.tag}}</td>
                             <td class="px-4 py-3">{{ el.workLink}}</td>
-                            <td class="px-4 py-3"><img :src="`http://localhost:4000/${el.image}`" alt="no image" class="w-[45px] h-[45px]"></td>
+                            <td class="px-4 py-3"><img :src="el.image" alt="no image" class="w-[45px] h-[45px]"></td>
                             
                             <td class="px-4 py-3 text-[20px]">
                                 <div  class="bg-white rounded  shadow flex w-[155px]" >
