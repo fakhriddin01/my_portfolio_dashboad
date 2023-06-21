@@ -1,5 +1,5 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://194.36.88.215:4000/api"
+axios.defaults.baseURL = "https://myportfoliobackend-production.up.railway.app/"
 
 export default axios
