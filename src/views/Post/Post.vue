@@ -223,14 +223,12 @@ const showcomments = (id) =>{
                             
                             v-model="contactInfo.content"
                             :init="{
-                                menubar: false,
+                                menubar: true,
                                 height: 400,
-                                plugins: 'lists link image emoticons code paste',
+                                plugins: ' list advlist code anchor  autolink autoresize hr insertdatetime autosave charmap code codesample codesample directionality emoticons fullscreen help image importcss insertdatetime link lists media nonbreaking pagebreak preview quickbars save searchreplace table template  tinydrive  visualblocks visualchars wordcount tabfocus',
                                 paste_data_images: true,
-                                toolbar:
-                                'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-                                toolbar:
-                                'undo redo | blocks fontsize | emoticons bold italic underline strikethrough  | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight checklist numlist bullist  | charmap | removeformat'
+                                toolbar1: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | indent outdent | wordcount table  tableinsertdialog code codesample hr insertdatetime anchor' ,
+                                toolbar2: '',
                             }"
                         />
                     </div>
