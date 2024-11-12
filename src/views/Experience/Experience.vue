@@ -262,8 +262,8 @@ onMounted(()=>{
                     <tbody class="">
                         <tr v-for="(el, index) in computedList" :key="el.id" class="border-b dark:border-gray-700">
                             <td class="px-4 py-3">{{ el.position }}</td>
-                            <td class="px-4 py-3">{{ el.start.substring(0,10)}}</td>
-                            <td class="px-4 py-3">{{ el.end.substring(0,10)}}</td>
+                            <td class="px-4 py-3">{{ el.start?.substring(0,10)}}</td>
+                            <td class="px-4 py-3">{{ el.end?.substring(0,10)}}</td>
                             <td class="px-4 py-3">{{ el.description}}</td>
                             <td class="px-4 py-3">{{ el.company}}</td>
                             <td class="px-4 py-3 text-[20px]">
